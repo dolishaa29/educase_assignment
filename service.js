@@ -67,6 +67,7 @@ exports.listSchools = async (req, res) => {
         schoolsWithDistance.sort((a, b) => {
             return a.distance - b.distance;
         });
+        
 
         res.status(200).json({
             message: 'Schools fetched successfully',
