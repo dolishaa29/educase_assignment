@@ -55,14 +55,9 @@ school-management-api/
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/school-management-api.git
+git clone https://github.com/dolishaa29/educase_assignment.git
 ```
 
-## 2️⃣ Navigate to Project Directory
-
-```bash
-cd school-management-api
-```
 
 ## 3️⃣ Install Dependencies
 
@@ -92,13 +87,13 @@ DB_NAME=school_management
 ## Create Database
 
 ```sql
-CREATE DATABASE school_management;
+CREATE DATABASE defaultdb;
 ```
 
 ## Select Database
 
 ```sql
-USE school_management;
+USE defaultdb;
 ```
 
 ## Create Schools Table
@@ -132,7 +127,7 @@ npm start
 Server will run on:
 
 ```bash
-http://localhost:5000
+http://localhost:7000
 ```
 
 ---
@@ -173,7 +168,7 @@ POST /addSchool
 ### Endpoint
 
 ```http
-GET /listSchools?latitude=26.9124&longitude=75.7873
+POST /listSchools?latitude=26.9124&longitude=75.7873
 ```
 
 ### Example Response
@@ -203,8 +198,7 @@ The project is deployed on Render.
 You can test the APIs using:
 
 - Postman
-- Thunder Client
-- cURL
+
 
 ---
 
