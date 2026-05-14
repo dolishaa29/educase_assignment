@@ -1,112 +1,226 @@
-# School Management API
+# 📚 School Management API
 
-This is a Node.js assignment project for Educase.
+A professional REST API built with Node.js, Express.js, and MySQL for managing school data.
+
+This project was developed as part of the Educase assignment.
 
 The API allows users to:
-- Add schools
-- Get schools sorted by nearest location
+
+- ➕ Add new schools
+- 📍 Fetch schools sorted by nearest location using latitude and longitude
+- 🗄️ Store school records in MySQL database
 
 ---
 
-## Tech Stack
+# 🚀 Features
+
+- RESTful API architecture
+- MySQL database integration
+- Location-based school sorting
+- Input validation
+- Environment variable configuration
+- Ready for deployment on Render
+
+---
+
+# 🛠️ Tech Stack
 
 - Node.js
 - Express.js
 - MySQL
+- dotenv
+- nodemon
 
 ---
 
-## Installation
+# 📂 Project Structure
 
-Clone the repository:
+```bash
+school-management-api/
+│
+├── controllers/
+├── routes/
+├── models/
+├── config/
+├── .env
+├── server.js
+├── package.json
+└── README.md
+```
 
+---
+
+# ⚙️ Installation
+
+## 1️⃣ Clone the Repository
+
+```bash
 git clone https://github.com/your-username/school-management-api.git
+```
 
-Install dependencies:
+## 2️⃣ Navigate to Project Directory
 
+```bash
+cd school-management-api
+```
+
+## 3️⃣ Install Dependencies
+
+```bash
 npm install
+```
 
 ---
 
-## Environment Variables
+# 🔐 Environment Variables
 
-Create a `.env` file and add:
+Create a `.env` file in the root directory and add the following variables:
 
+```env
 PORT=5000
 
 DB_HOST=localhost
-
 DB_USER=root
-
 DB_PASSWORD=yourpassword
-
 DB_NAME=school_management
+```
 
 ---
 
-## Database Setup
+# 🗄️ Database Setup
 
-Create database:
+## Create Database
 
+```sql
 CREATE DATABASE school_management;
+```
 
-Use database:
+## Select Database
 
+```sql
 USE school_management;
+```
 
-Create table:
+## Create Schools Table
 
+```sql
 CREATE TABLE schools (
-id INT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(255) NOT NULL,
-address VARCHAR(255) NOT NULL,
-latitude FLOAT NOT NULL,
-longitude FLOAT NOT NULL
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  latitude FLOAT NOT NULL,
+  longitude FLOAT NOT NULL
 );
+```
 
 ---
 
-## Run Project
+# ▶️ Run the Project
 
-Development:
+## Development Mode
 
+```bash
 npm run dev
+```
 
-Production:
+## Production Mode
 
+```bash
 npm start
+```
+
+Server will run on:
+
+```bash
+http://localhost:5000
+```
 
 ---
 
-## API Endpoints
+# 📌 API Endpoints
 
-### Add School
+## ➕ Add School
 
+### Endpoint
+
+```http
 POST /addSchool
+```
 
-Request Body:
+### Request Body
 
+```json
 {
-"name": "ABC School",
-"address": "Jaipur",
-"latitude": 26.9124,
-"longitude": 75.7873
+  "name": "ABC School",
+  "address": "Jaipur",
+  "latitude": 26.9124,
+  "longitude": 75.7873
 }
+```
+
+### Success Response
+
+```json
+{
+  "message": "School added successfully"
+}
+```
 
 ---
 
-### List Schools
+## 📍 List Schools by Nearest Location
 
+### Endpoint
+
+```http
 GET /listSchools?latitude=26.9124&longitude=75.7873
+```
+
+### Example Response
+
+```json
+[
+  {
+    "id": 1,
+    "name": "ABC School",
+    "address": "Jaipur",
+    "latitude": 26.9124,
+    "longitude": 75.7873
+  }
+]
+```
 
 ---
 
-## Deployment
+# 🌍 Deployment
 
-Hosted on Render.
+The project is deployed on Render.
 
 ---
 
-## Author
+# 🧪 API Testing
 
-Dolisha
+You can test the APIs using:
+
+- Postman
+- Thunder Client
+- cURL
+
+---
+
+# 📈 Future Improvements
+
+- User authentication & authorization
+- Pagination support
+- School image upload
+- Advanced search filters
+- Docker support
+- Unit & integration testing
+
+---
+
+# 👩‍💻 Author
+
+**Dolisha**
+
+Developed as part of the Educase Backend Assignment.
