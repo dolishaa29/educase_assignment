@@ -1,23 +1,45 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-const pool = mysql.createPool({
+const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
-    ssl: {
-        rejectUnauthorized: false 
-    },
     waitForConnections: true,
     connectionLimit: 10
 });
 
-const db = pool.promise();
+async function connectDB() {
+    try 
+    {
+        const connection = await db.getConnection();
+        console.log('MySQL database Connected');
 
-db.getConnection()
-    .then(() => console.log("Cloud DB Connected! "))
-    .catch((err) => console.log("Connection Error: ", err));
+        const createTableQuery = `
+            CREATE TABLE IF NOT EXISTS schools (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                name VARCHAR(255) NOT NULL,
+                address TEXT NOT NULL,
+                latitude DECIMAL(10,6) NOT NULL,
+                longitude DECIMAL(10,6) NOT NULL
+            )
+        `;
+
+        await connection.query(createTableQuery);
+
+        console.log('Schools table ready');
+
+        connection.release();
+    } 
+    catch (error) 
+    {
+        console.log('MySQL database Connection Failed');
+        console.log(error.message);
+    }
+}
+
+connectDB();
 
 module.exports = db;
