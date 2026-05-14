@@ -43,9 +43,9 @@ exports.listSchools = async (req, res) => {
 
     try {
 
-        const userLat = parseFloat(req.query.latitude);
-        const userLon = parseFloat(req.query.longitude);
-
+        const userLat = parseFloat(req.body.latitude);
+        const userLon = parseFloat(req.body.longitude);
+        console.log('User Location:', userLat, userLon);
         const [schools] = await db.query('SELECT * FROM schools');
 
 
